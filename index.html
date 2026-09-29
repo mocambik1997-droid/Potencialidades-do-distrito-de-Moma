@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-MZ" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POTENCIALIDADES DO DISTRITO DE MOMA | Portal de Divulgação</title>
+    <meta name="description" content="Portal de Divulgação das Potencialidades do Distrito de Moma, Província de Nampula. Oportunidades agrícolas, pesqueiras, minerais, turismo e investimento.">
+    
+    <!-- Google Fonts: Inter + Montserrat + Merriweather -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800;900&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS (Mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        opais: {
+                            red: '#ba0000',       /* Vermelho Editorial */
+                            darkred: '#8b0000',   /* Vermelho Escuro */
+                            black: '#121212',     /* Preto Editorial */
+                            darkgray: '#1e1e1e',  /* Cinza Escuro */
+                            lightbg: '#f4f4f6',   /* Fundo Leve */
+                            cardbg: '#ffffff',    /* Fundo de Card */
+                            border: '#e5e7eb'     /* Borda Leve */
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'serif': ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .opais-top-line {
+            height: 5px;
+            background-color: #ba0000;
+        }
+        .opais-badge {
+            background-color: #ba0000;
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card-editorial {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-editorial:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-opais-lightbg antialiased text-base">
+
+    <!-- FAIXA SUPERIOR VERMELHA EDITORIAL -->
+    <div class="opais-top-line w-full"></div>
+
+    <!-- TOPO RESTRUTURADO COM INFORMAÇÕES OFICIAIS -->
+    <div class="bg-opais-black text-slate-300 py-3 px-4 border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-heading uppercase text-xs sm:text-sm tracking-wider">
+            <div class="flex items-center space-x-3 text-white font-extrabold">
+                <span class="text-opais-red">REPÚBLICA DE MOÇAMBIQUE</span>
+                <span class="text-neutral-600">|</span>
+                <span>PROVÍNCIA DE NAMPULA</span>
+            </div>
+            <div class="text-amber-400 font-extrabold">
+                GOVERNO DO DISTRITO DE MOMA
+            </div>
+        </div>
+    </div>
+
+    <!-- CABEÇALHO PRINCIPAL -->
+    <header class="bg-white border-b border-opais-border sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- Título do Portal -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-1">
+                        <span class="text-xs font-black uppercase text-opais-red font-heading tracking-widest">Portal de Divulgação Oficial</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-opais-black font-heading tracking-tight leading-none uppercase">
+                        POTENCIALIDADES DO DISTRITO DE MOMA
+                    </h1>
+                    <p class="text-sm sm:text-base text-slate-700 font-semibold mt-2">
+                        Plataforma Promocional dos Recursos Agrícolas, Pesqueiros, Minerais, Turísticos e Oportunidades de Investimento
+                    </p>
+                </div>
+
+                <!-- Painel Informativo Lateral -->
+                <div class="hidden lg:flex items-center space-x-5 border-l-2 border-slate-200 pl-6 text-sm">
+                    <div>
+                        <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider font-heading">Sede Administrativa</span>
+                        <span class="font-extrabold text-opais-black text-base">Vila Sede de Moma</span>
+                    </div>
+                    <a href="#investir" class="bg-opais-red hover:bg-opais-darkred text-white font-heading font-bold px-5 py-2.5 text-xs uppercase tracking-wider rounded-sm transition">
+                        Investir em Moma
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BARRA DE NAVEGAÇÃO CATEGORIZADA -->
+        <nav class="bg-opais-black text-white border-t border-b border-neutral-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-14">
+                    
+                    <div class="hidden md:flex space-x-1 font-heading text-xs lg:text-sm font-bold uppercase tracking-wider">
+                        <a href="#" class="px-3 py-4 hover:text-opais-red transition flex items-center">
+                            Início
+                        </a>
+                        <a href="#agricultura" class="px-3 py-4 hover:text-opais-red transition">
+                            <i class="fas fa-wheat-field mr-1.5"></i> Agricultura
+                        </a>
+                        <a href="#pesca" class="px-3 py-4 hover:text-opais-red transition flex items-center">
+                            <i class="fas fa-fish mr-1.5"></i> Pesca
+                        </a>
+                        <a href="#minerais" class="px-3 py-4 hover:text-opais-red transition flex items-center">
+                            <i class="fas fa-gem mr-1.5"></i> Minerais
+                        </a>
+                        <a href="#turismo" class="px-3 py-4 hover:text-opais-red transition flex items-center">
+                            <i class="fas fa-umbrella-beach mr-1.5"></i> Turismo
+                        </a>
+                        <a href="#investir" class="px-3 py-4 bg-opais-red text-white flex items-center font-black">
+                            <i class="fas fa-chart-line mr-1.5"></i> Investir
+                        </a>
+                    </div>
+
+                    <div class="hidden lg:flex items-center text-xs text-slate-300">
+                        <span class="uppercase font-black tracking-widest text-opais-red mr-2">Destaque:</span>
+                        <span class="text-white font-bold">10 Centros de Pesca & Produção Agrícola de Gergelim</span>
+                    </div>
+
+                    <!-- Botão Mobile -->
+                    <div class="md:hidden flex items-center justify-between w-full py-2">
+                        <span class="font-heading font-bold text-sm uppercase tracking-wider text-opais-red">Menu de Navegação</span>
+                        <button id="mobile-menu-btn" class="p-2 text-white focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div id="mobile-menu" class="hidden md:hidden bg-opais-darkgray border-t border-neutral-800 px-4 py-3 space-y-2 text-sm font-heading uppercase font-bold">
+                <a href="#agricultura" class="block py-2 text-white border-b border-neutral-700">Potencial Agrícola</a>
+                <a href="#pesca" class="block py-2 text-white border-b border-neutral-700">Mar & Pesca</a>
+                <a href="#minerais" class="block py-2 text-white border-b border-neutral-700">Recursos Minerais</a>
+                <a href="#turismo" class="block py-2 text-white border-b border-neutral-700">Turismo</a>
+                <a href="#investir" class="block py-2 text-opais-red">Investir em Moma</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO PRINCIPAL -->
+    <section class="relative bg-cover bg-center bg-no-repeat py-20 lg:py-28 text-white border-b-4 border-opais-red" style="background-image: url('vila-moma.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/65"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl space-y-6">
+                
+                <div class="inline-block opais-badge px-3.5 py-1.5 text-xs font-extrabold tracking-wider">
+                    Objetivo do Website
+                </div>
+                
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-heading text-white leading-tight uppercase tracking-tight">
+                    POTENCIALIDADES DO DISTRITO DE MOMA
+                </h2>
+                
+                <p class="text-xl sm:text-2xl font-serif italic text-amber-400 border-l-4 border-opais-red pl-4 py-1.5 leading-relaxed">
+                    Plataforma criada com o objetivo de divulgar, promover e valorizar as riquezas económicas, agrícolas, pesqueiras, minerais e turísticas do Distrito de Moma.
+                </p>
+
+                <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-sans max-w-3xl">
+                    Através deste portal, apresentamos dados oficiais, mapas de produção e oportunidades estratégicas de investimento para impulsionar o desenvolvimento sustentável da Vila Sede e de todas as localidades do distrito.
+                </p>
+
+                <div class="pt-4 flex flex-wrap items-center gap-4 text-sm font-heading font-bold">
+                    <a href="#investir" class="bg-opais-red hover:bg-opais-darkred text-white px-7 py-3.5 rounded-sm uppercase tracking-wider transition text-sm shadow-lg flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i> Investir em Moma
+                    </a>
+                    <a href="#agricultura" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3.5 rounded-sm uppercase tracking-wider transition text-sm backdrop-blur-sm">
+                        Potencial Agrícola
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECÇÃO AGRICULTURA -->
+    <section id="agricultura" class="py-14 bg-opais-lightbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="border-b-4 border-opais-black pb-4 mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
+                <div>
+                    <span class="text-sm font-black uppercase tracking-widest text-opais-red font-heading">Secção Especial</span>
+                    <h2 class="text-3xl sm:text-4xl font-black font-heading text-opais-black uppercase tracking-tight">POTENCIAL AGRÍCOLA</h2>
+                    <p class="text-sm font-semibold text-slate-700 mt-1">Terra, produção e aproveitamento produtivo do Distrito de Moma</p>
+                </div>
+                
+                <div class="bg-white border-2 border-opais-red px-5 py-3 rounded-sm text-right">
+                    <span class="block text-3xl font-black text-opais-red font-heading leading-none">219.431,17 ha</span>
+                    <span class="text-xs font-bold uppercase text-slate-700 tracking-wider font-heading">Área de terra arável</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 sm:p-10 border border-opais-border rounded-sm shadow-sm mb-12">
+                <div class="max-w-5xl space-y-5 text-base sm:text-lg text-slate-800 leading-relaxed font-sans">
+                    <p>
+                        A agricultura constitui uma das principais actividades económicas do Distrito de Moma, desempenhando um papel importante na segurança alimentar, no sustento das famílias e na geração de rendimento das comunidades locais.
+                    </p>
+                    <p>
+                        O distrito dispõe de uma área estimada de <strong>219.431,17 hectares de terra arável</strong>, distribuída por diferentes zonas com potencial para o desenvolvimento da actividade agrícola. A produção combina culturas destinadas ao consumo das famílias, culturas de rendimento e produção hortícola orientada para o abastecimento dos mercados locais.
+                    </p>
+                    <div class="p-5 bg-slate-50 border-l-4 border-opais-red text-sm sm:text-base text-slate-900 font-medium italic">
+                        A disponibilidade de terras agrícolas, associada às condições naturais existentes em diferentes zonas do distrito, cria oportunidades para o fortalecimento da produção e para a diversificação das actividades agrícolas.
+                    </div>
+                </div>
+            </div>
+
+            <!-- CULTURAS ALIMENTARES E DE RENDIMENTO -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Categorização da Produção</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">PRINCIPAIS CULTURAS</h3>
+                    <p class="text-sm text-slate-700 mt-1">
+                        A agricultura de Moma caracteriza-se pela diversidade de culturas produzidas pelas comunidades, divididas entre a subsistência e a comercialização.
+                    </p>
+                </div>
+
+                <div class="mb-12">
+                    <h4 class="text-lg font-black font-heading text-opais-black uppercase mb-5 flex items-center">
+                        <span class="w-3 h-3 bg-opais-red mr-2.5"></span> Culturas Alimentares
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                            <h5 class="font-heading font-black text-base text-opais-black uppercase">Milho</h5>
+                            <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                                Base para a segurança alimentar familiar e para abastecimento do mercado local.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                            <h5 class="font-heading font-black text-base text-opais-black uppercase">Mandioca</h5>
+                            <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                                Cultura essencial na dieta local, garantindo alimentos ao longo de todo o ano.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                            <h5 class="font-heading font-black text-base text-opais-black uppercase">Feijão & Amendoim</h5>
+                            <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                                Fontes nutricionais e de rendimento complementar pela venda dos excedentes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-black font-heading text-opais-black uppercase mb-5 flex items-center">
+                        <span class="w-3 h-3 bg-amber-600 mr-2.5"></span> Culturas de Rendimento
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                            <h5 class="font-heading font-black text-base text-opais-black uppercase">Caju</h5>
+                            <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                                Grande potencial económico gerador de receita comercial para os produtores locais.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                            <h5 class="font-heading font-black text-base text-opais-black uppercase">Coco (Mirrupi)</h5>
+                            <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                                Produção com destaque na Localidade de Mirrupi, através da Companhia Boror.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                            <h5 class="font-heading font-black text-base text-opais-black uppercase">Gergelim</h5>
+                            <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                                Cultura estratégica de elevado rendimento comercial, com forte expressão em <strong>Piqueira, Nailocone e Namiwi</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOTO REAL DA AGRICULTURA -->
+            <div class="bg-opais-black text-white p-8 sm:p-10 rounded-sm my-12 border border-neutral-800 shadow-md">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="bg-opais-red text-white text-xs font-black uppercase px-3 py-1 font-heading">
+                            Infra-estrutura e Técnica
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-black font-heading">
+                            Desenvolvimento de Sistemas de Irrigação em Moma
+                        </h3>
+                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+                            A introdução de tecnologia de regadio e aproveitamento hídrico permite intensificar a produção hortícola e reduzir a vulnerabilidade do sector agrário em relação à sazonalidade das chuvas.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-5 h-64 overflow-hidden rounded-sm border border-neutral-700">
+                        <img src="1000805518.jpg" alt="Campo de regadio com agricultores em Moma" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZONAS AGRÍCOLAS DE DESTAQUE -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Mapeamento Territorial</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">ZONAS AGRÍCOLAS DE DESTAQUE</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                        <span class="text-xs font-black uppercase text-amber-700 tracking-wider font-heading block">Localidades</span>
+                        <h4 class="text-xl font-black font-heading text-opais-black mt-1">PIQUEIRA, NAILOCONE & NAMIWI</h4>
+                        <p class="text-sm font-bold text-slate-900 mt-2">Polo do Gergelim</p>
+                        <p class="text-sm text-slate-700 leading-relaxed mt-2">
+                            Zonas com forte vocação agrícola e elevada capacidade produtiva com destaque especial para o cultivo de <strong>Gergelim</strong>.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                        <span class="text-xs font-black uppercase text-opais-red tracking-wider font-heading block">Localidade</span>
+                        <h4 class="text-xl font-black font-heading text-opais-black mt-1">JAGOMA</h4>
+                        <p class="text-sm font-bold text-slate-900 mt-2">Potencial para hortícolas</p>
+                        <p class="text-sm text-slate-700 leading-relaxed mt-2">
+                            Aproveitamento hídrico das <strong>represas</strong> para uma irrigação contínua e abastecimento do mercado.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-black card-editorial">
+                        <span class="text-xs font-black uppercase text-slate-500 tracking-wider font-heading block">Localidade</span>
+                        <h4 class="text-xl font-black font-heading text-opais-black mt-1">MPAGO</h4>
+                        <p class="text-sm font-bold text-slate-900 mt-2">Agricultura com regadio</p>
+                        <p class="text-sm text-slate-700 leading-relaxed mt-2">
+                            Favorecida por represas para regularizar a produção de hortícolas destinada ao comércio regional.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                        <span class="text-xs font-black uppercase text-amber-700 tracking-wider font-heading block">Localidade Administrativa</span>
+                        <h4 class="text-xl font-black font-heading text-opais-black mt-1">MIRRUPI</h4>
+                        <p class="text-sm font-bold text-slate-900 mt-2">Cadeia do Coco & Companhia Boror</p>
+                        <p class="text-sm text-slate-700 leading-relaxed mt-2">
+                            Polo focado na recolha, comercialização e transformação de coco e seus derivados agro-industriais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PERFIL AGRÍCOLA DE MOMA -->
+            <div class="bg-white border-2 border-opais-black p-6 sm:p-10 rounded-sm">
+                <div class="border-b-2 border-opais-red pb-4 mb-8 text-center">
+                    <span class="opais-badge px-3.5 py-1.5 text-xs">Ficha Técnica do Sector</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black uppercase mt-2">PERFIL AGRÍCOLA DE MOMA</h3>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm sm:text-base border-collapse">
+                        <thead>
+                            <tr class="bg-opais-black text-white font-heading font-bold uppercase text-xs sm:text-sm">
+                                <th class="p-4 border border-slate-700 w-1/3">Indicador</th>
+                                <th class="p-4 border border-slate-700">Informação Oficial</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-800">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4 font-bold text-opais-black border">Área de terra arável</td>
+                                <td class="p-4 font-extrabold text-opais-red border">219.431,17 hectares</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4 font-bold text-opais-black border">Culturas alimentares</td>
+                                <td class="p-4 border">Milho, mandioca, feijão, amendoim, batata-doce e hortícolas</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4 font-bold text-opais-black border">Culturas de rendimento</td>
+                                <td class="p-4 border">Caju, coco e gergelim</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4 font-bold text-opais-black border">Zonas com potencial para Gergelim</td>
+                                <td class="p-4 font-bold border text-amber-700">Piqueira, Nailocone e Namiwi</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4 font-bold text-opais-black border">Zonas com potencial hortícola</td>
+                                <td class="p-4 font-bold border">Jagoma e Mpago</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4 font-bold text-opais-black border">Zona de destaque na produção de coco</td>
+                                <td class="p-4 font-bold border">Mirrupi (Companhia Boror)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECÇÃO MAR, PESCA E RECURSOS COSTEIROS -->
+    <section id="pesca" class="py-14 bg-white border-t border-opais-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="border-b-4 border-opais-black pb-4 mb-10">
+                <span class="text-sm font-black uppercase tracking-widest text-opais-red font-heading">Secção Especial</span>
+                <h2 class="text-3xl sm:text-4xl font-black font-heading text-opais-black uppercase tracking-tight">MAR, PESCA E RECURSOS COSTEIROS</h2>
+                <p class="text-base sm:text-lg font-bold text-slate-700 mt-1">Onde o Oceano Índico se encontra com as comunidades</p>
+            </div>
+
+            <div class="bg-opais-lightbg p-6 sm:p-10 border border-opais-border rounded-sm shadow-sm mb-12 space-y-4 text-base sm:text-lg text-slate-800 leading-relaxed font-sans">
+                <p>
+                    O Distrito de Moma possui uma importante ligação com o Oceano Índico, que constitui uma das características naturais marcantes do seu território. O mar e os recursos costeiros desempenham um papel relevante na vida das comunidades, contribuindo para a alimentação, geração de rendimento e desenvolvimento de actividades económicas.
+                </p>
+                <p>
+                    Ao longo do litoral encontram-se diferentes ambientes naturais, incluindo praias, estuários, mangais, áreas de fundos arenosos e zonas rochosas e coralinas. Estes ambientes proporcionam condições para a existência de diversas espécies marinhas e constituem recursos importantes para as comunidades que dependem directa ou indirectamente do mar.
+                </p>
+            </div>
+
+            <!-- PESCA -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Actividade Económica</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">PESCA</h3>
+                    <p class="text-sm font-bold text-slate-700 mt-1">Uma actividade ligada à vida das comunidades</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-slate-800">
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                        <p class="text-sm leading-relaxed">
+                            A pesca artesanal constitui uma actividade económica tradicional das comunidades costeiras de Moma. Para muitas famílias, a actividade representa uma fonte de alimento e de rendimento.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                        <p class="text-sm leading-relaxed">
+                            Levantamentos oficiais sobre a pesca artesanal identificaram <strong>10 centros de pesca marítima</strong> de grande importância operacional e económica no distrito.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                        <p class="text-sm leading-relaxed">
+                            A actividade pesqueira envolve uma cadeia económica que vai além da captura, integrando pescadores, comerciantes, processadores e transportadores de pescado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMUNIDADES E CENTROS DE PESCA (10 CENTROS) -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Rede de Produção</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">10 CENTROS DE PESCA DE MOMA</h3>
+                    <p class="text-sm font-bold text-slate-700 mt-1">Os principais centro comunitário de pesca</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Moma Sede</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Pilivili</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Mucoroge</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Muolone</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Namaize</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Nacalela</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Mponha</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Coropa</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Mpuitine</span>
+                    </div>
+                    <div class="bg-white p-4 border border-opais-border border-l-4 border-l-opais-red text-center rounded-sm">
+                        <span class="font-heading font-black text-opais-black text-sm block uppercase">Mualaze</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECURSOS PESQUEIROS -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Biodiversidade Marinha</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">RECURSOS PESQUEIROS</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-black card-editorial">
+                        <h4 class="font-heading font-black text-lg text-opais-black uppercase">Peixes</h4>
+                        <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                            Diversas espécies de peixes constituem uma importante fonte de alimento e rendimento para as comunidades pesqueiras ao longo do litoral.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-black card-editorial">
+                        <h4 class="font-heading font-black text-lg text-opais-black uppercase">Camarão</h4>
+                        <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                            O camarão constitui um recurso marinho de elevada importância económica e comercial capturado nas águas costeiras.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-black card-editorial">
+                        <h4 class="font-heading font-black text-lg text-opais-black uppercase">Caranguejo & Lagosta</h4>
+                        <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                            Recursos de alto valor comercial capturados nos ecossistemas estuarinos e marinhos do distrito.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-black card-editorial md:col-span-3 lg:col-span-3">
+                        <h4 class="font-heading font-black text-lg text-opais-black uppercase">Lulas</h4>
+                        <p class="text-sm text-slate-700 mt-2.5 leading-relaxed">
+                            A captura de lulas representa uma vertente importante na cadeia de pesca artesanal, movimentando os mercados locais de processamento e conservação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOMA E O MAR (RESUMO FICHA TÉCNICA) -->
+            <div class="bg-opais-black text-white p-6 sm:p-10 rounded-sm mb-14 border-2 border-opais-black shadow-md">
+                <div class="border-b-2 border-opais-red pb-4 mb-8 text-center">
+                    <span class="bg-opais-red text-white text-xs font-black uppercase px-3 py-1 font-heading">Síntese do Sector</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-white uppercase mt-2">MOMA E O MAR</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div class="bg-neutral-900 p-5 border border-neutral-800 rounded-sm">
+                        <span class="block text-4xl font-black text-opais-red font-heading mb-1">10</span>
+                        <span class="text-xs uppercase font-bold text-slate-400 block mb-2">Centros de Pesca Oficiais</span>
+                        <p class="text-slate-300">Moma sede, Pilivili, Mucoroge, Muolone, Namaize, Nacalela, Mponha, Coropa, Mpuitine e Mualaze</p>
+                    </div>
+
+                    <div class="bg-neutral-900 p-5 border border-neutral-800 rounded-sm">
+                        <span class="text-xs uppercase font-bold text-opais-red block mb-1">Principais Recursos Pesqueiros</span>
+                        <p class="text-slate-200 font-bold text-base">Peixes, camarão, caranguejo, lagosta e lulas</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECÇÃO RECURSOS MINERAIS -->
+    <section id="minerais" class="py-14 bg-opais-lightbg border-t border-opais-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="border-b-4 border-opais-black pb-4 mb-10">
+                <span class="text-sm font-black uppercase tracking-widest text-opais-red font-heading">Secção Especial</span>
+                <h2 class="text-3xl sm:text-4xl font-black font-heading text-opais-black uppercase tracking-tight">RECURSOS MINERAIS</h2>
+                <p class="text-base sm:text-lg font-bold text-slate-700 mt-1">Uma riqueza geológica distribuída pelo território</p>
+            </div>
+
+            <div class="bg-white p-6 sm:p-10 border border-opais-border rounded-sm shadow-sm mb-12 space-y-4 text-base sm:text-lg text-slate-800 leading-relaxed font-sans">
+                <p>
+                    O Distrito de Moma possui um património mineral diversificado, com diferentes recursos distribuídos pelas suas localidades administrativas e comunidades. Entre os principais destacam-se as areias pesadas, as pedras preciosas e semipreciosas e o ouro.
+                </p>
+            </div>
+
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Potencial Mineiro</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">PRINCIPAIS RECURSOS</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Areias Pesadas -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-opais-red card-editorial flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-black uppercase text-opais-red tracking-wider font-heading block">Principal recurso mineral de Moma</span>
+                            <h4 class="text-2xl font-black font-heading text-opais-black mt-1">AREIAS PESADAS</h4>
+                            <p class="text-sm text-slate-700 leading-relaxed mt-3">
+                                As areias pesadas constituem um dos principais recursos minerais do distrito, destacando-se pela presença de minerais como ilmenite, zircão e rútilo.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div>
+                                <span class="font-bold text-slate-900 block">Zona de ocorrência:</span>
+                                <span class="text-slate-600">Localidades Administrativas de Pilivili e Mpago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedras Preciosas -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-amber-600 card-editorial flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-black uppercase text-amber-600 tracking-wider font-heading block">Ocorrências Geológicas</span>
+                            <h4 class="text-2xl font-black font-heading text-opais-black mt-1">PEDRAS PRECIOSAS</h4>
+                            <p class="text-sm text-slate-700 leading-relaxed mt-3">
+                                Ocorrências de pedras preciosas e semipreciosas, com destaque para a zona de Mavuco, na Localidade Administrativa de Piqueira.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 text-xs">
+                            <span class="font-bold text-slate-900 block">Zona de ocorrência:</span>
+                            <span class="text-slate-600">Comunidade de Mavuco — Piqueira</span>
+                        </div>
+                    </div>
+
+                    <!-- Ouro -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-opais-black card-editorial flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-black uppercase text-slate-500 tracking-wider font-heading block">Recurso Identificado</span>
+                            <h4 class="text-2xl font-black font-heading text-opais-black mt-1">OURO</h4>
+                            <p class="text-sm text-slate-700 leading-relaxed mt-3">
+                                O ouro constitui outro recurso mineral identificado no território de Moma, com ocorrência na Localidade Administrativa de Jagoma.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 text-xs">
+                            <span class="font-bold text-slate-900 block">Zona de ocorrência:</span>
+                            <span class="text-slate-600">Localidade Administrativa de Jagoma</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECÇÃO TURISMO EM MOMA -->
+    <section id="turismo" class="py-14 bg-white border-t border-opais-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- CABEÇALHO DA SECÇÃO -->
+            <div class="border-b-4 border-opais-black pb-4 mb-10">
+                <span class="text-sm font-black uppercase tracking-widest text-opais-red font-heading">Secção Especial</span>
+                <h2 class="text-3xl sm:text-4xl font-black font-heading text-opais-black uppercase tracking-tight">TURISMO EM MOMA</h2>
+                <p class="text-base sm:text-lg font-bold text-slate-700 mt-1">Descubra as praias, ilhas e paisagens de Moma</p>
+            </div>
+
+            <!-- INTRODUÇÃO -->
+            <div class="bg-opais-lightbg p-6 sm:p-10 border border-opais-border rounded-sm shadow-sm mb-12 space-y-4 text-base sm:text-lg text-slate-800 leading-relaxed font-sans">
+                <p>
+                    Moma é um distrito com belas paisagens costeiras, praias, ilhas e comunidades que fazem parte da sua identidade. É um lugar onde os visitantes podem conhecer a natureza, apreciar o mar, descobrir a cultura local e provar pratos preparados com produtos da região.
+                </p>
+                <p>
+                    Nesta página, convidamo-lo a conhecer alguns dos destinos turísticos de Moma, saber onde ficam e descobrir como chegar até eles.
+                </p>
+                <p class="font-bold text-opais-red">
+                    Explore Moma e conheça os seus destinos turísticos.
+                </p>
+            </div>
+
+            <!-- PRAIAS DE MOMA -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Património Litorâneo</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">PRAIAS DE MOMA</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Praia de Mucoroge -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-opais-red card-editorial flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-black font-heading text-opais-black">Praia de Mucoroge</h4>
+                            <p class="text-xs font-extrabold uppercase text-opais-red tracking-wider font-heading mt-1 mb-3">
+                                Localização: Localidade Administrativa de Mirupi, Comunidade de Mucoroge.
+                            </p>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                A Praia de Mucoroge é um dos pontos de interesse do litoral de Moma. É um lugar para apreciar a paisagem, ouvir o som do mar, tirar fotografias e conhecer um pouco da vida das comunidades costeiras.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="#mapa" class="text-opais-red hover:text-opais-darkred flex items-center font-heading uppercase tracking-wider text-xs font-bold">
+                                Conheça Mucoroge e veja como chegar →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Praia de Matadane -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-opais-black card-editorial flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-black font-heading text-opais-black">Praia de Matadane</h4>
+                            <p class="text-xs font-extrabold uppercase text-slate-600 tracking-wider font-heading mt-1 mb-3">
+                                Localização: Localidade Administrativa de Mpago.
+                            </p>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Matadane faz parte dos destinos costeiros de Moma. A praia pode ser incluída num passeio pelo distrito, permitindo aos visitantes conhecer melhor esta parte do litoral.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="#mapa" class="text-opais-red hover:text-opais-darkred flex items-center font-heading uppercase tracking-wider text-xs font-bold">
+                                Conheça Matadane e veja como chegar →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Praia de Miramar -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-amber-600 card-editorial flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-black font-heading text-opais-black">Praia de Miramar</h4>
+                            <p class="text-xs font-extrabold uppercase text-amber-700 tracking-wider font-heading mt-1 mb-3">
+                                Localização: Vila-Sede de Moma.
+                            </p>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                A Praia de Miramar fica na Vila-Sede de Moma. A sua localização permite combinar um passeio junto ao mar com uma visita à vila, aos seus estabelecimentos comerciais e a outros pontos de interesse.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="#mapa" class="text-opais-red hover:text-opais-darkred flex items-center font-heading uppercase tracking-wider text-xs font-bold">
+                                Conheça Miramar e veja como chegar →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Praia de Mingolene -->
+                    <div class="bg-white p-7 border border-opais-border border-t-4 border-t-opais-red card-editorial flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-black font-heading text-opais-black">Praia de Mingolene</h4>
+                            <p class="text-xs font-extrabold uppercase text-opais-red tracking-wider font-heading mt-1 mb-3">
+                                Localização: Vila-Sede de Moma.
+                            </p>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Mingolene é outro ponto do litoral situado na Vila-Sede. É uma opção para quem deseja conhecer a costa de Moma e explorar os lugares próximos do centro da vila.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="#mapa" class="text-opais-red hover:text-opais-darkred flex items-center font-heading uppercase tracking-wider text-xs font-bold">
+                                Conheça Mingolene e veja como chegar →
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ILHAS DE MOMA -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Património Insular</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">ILHAS DE MOMA</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Ilha de Jajane -->
+                    <div class="bg-opais-black text-white p-7 rounded-sm border border-neutral-800 shadow-md flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-black font-heading text-white">Ilha de Jajane</h4>
+                            <p class="text-sm text-slate-300 leading-relaxed mt-3">
+                                A Ilha de Jajane faz parte das paisagens insulares de Moma. A sua envolvente natural oferece interesse para quem deseja conhecer o litoral, observar a paisagem e fotografar a natureza.
+                            </p>
+                            <p class="text-xs italic text-amber-400 mt-3">
+                                Antes de organizar uma visita, é importante confirmar as condições de acesso e a disponibilidade de transporte marítimo.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-neutral-800">
+                            <a href="#mapa" class="text-amber-400 hover:text-white flex items-center font-heading uppercase tracking-wider text-xs font-bold">
+                                Descubra Jajane →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ilha de Macarane -->
+                    <div class="bg-opais-black text-white p-7 rounded-sm border border-neutral-800 shadow-md flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-black font-heading text-white">Ilha de Macarane</h4>
+                            <p class="text-sm text-slate-300 leading-relaxed mt-3">
+                                Macarane é outro ponto de interesse insular do distrito. A ilha pode fazer parte de um roteiro dedicado à descoberta das paisagens costeiras e dos recursos naturais de Moma.
+                            </p>
+                            <p class="text-xs italic text-amber-400 mt-3">
+                                As condições de acesso devem ser confirmadas antes da viagem.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-neutral-800">
+                            <a href="#mapa" class="text-amber-400 hover:text-white flex items-center font-heading uppercase tracking-wider text-xs font-bold">
+                                Descubra Macarane →
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- O QUE PODE DESCOBRIR EM MOMA? -->
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-300 pb-3 mb-8">
+                    <span class="opais-badge px-3 py-1 text-xs">Experiências do Distrito</span>
+                    <h3 class="text-2xl sm:text-3xl font-black font-heading text-opais-black mt-2">O QUE PODE DESCOBRIR EM MOMA?</h3>
+                    <p class="text-sm text-slate-700 mt-2 leading-relaxed">
+                        O turismo permite conhecer não só as praias e as ilhas, mas também as pessoas, os costumes e as actividades que fazem parte da vida do distrito.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial">
+                        <h4 class="font-heading font-black text-base text-opais-black uppercase mb-2">Praias e paisagens</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Conheça o litoral, aprecie o mar e descubra diferentes pontos da costa de Moma.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-black card-editorial">
+                        <h4 class="font-heading font-black text-base text-opais-black uppercase mb-2">Natureza</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Observe as paisagens naturais e conheça os ambientes costeiros e os mangais existentes no distrito.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                        <h4 class="font-heading font-black text-base text-opais-black uppercase mb-2">Cultura e tradições</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Descubra os costumes das comunidades, as formas de vida locais e as tradições transmitidas de geração em geração.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-amber-600 card-editorial">
+                        <h4 class="font-heading font-black text-base text-opais-black uppercase mb-2">Gastronomia local</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Conheça os pratos e os produtos da região, incluindo o pescado e outros produtos locais.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 border border-opais-border border-t-4 border-t-opais-red card-editorial md:col-span-2 lg:col-span-2">
+                        <h4 class="font-heading font-black text-base text-opais-black uppercase mb-2">Passeios e visitas</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Organize visitas a diferentes destinos, tendo em conta as distâncias, as condições das estradas e as possibilidades de transporte.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VENHA DESCOBRIR MOMA -->
+            <div class="bg-opais-black text-white p-8 sm:p-12 rounded-sm border-2 border-opais-red text-center space-y-4">
+                <span class="bg-opais-red text-white text-xs font-black uppercase px-3.5 py-1.5 font-heading">
+                    Convite
+                </span>
+                <h3 class="text-3xl sm:text-4xl font-black font-heading uppercase text-white">
+                    VENHA DESCOBRIR MOMA
+                </h3>
+                <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-serif italic">
+                    Há muito para conhecer no litoral de Moma. Explore as praias, descubra as ilhas e conheça as comunidades que dão vida ao distrito.
+                </p>
+                <p class="text-sm font-bold text-amber-400">
+                    Escolha o seu destino e comece a explorar Moma.
+                </p>
+                <div class="pt-2">
+                    <a href="#mapa" class="inline-block bg-opais-red hover:bg-opais-darkred text-white font-heading font-black px-8 py-3.5 text-xs uppercase tracking-wider rounded-sm transition">
+                        VER TODOS OS DESTINOS TURÍSTICOS →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECÇÃO INVESTIR EM MOMA -->
+    <section id="investir" class="py-14 bg-opais-lightbg border-t border-opais-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="border-b-4 border-opais-black pb-4 mb-10">
+                <span class="text-sm font-black uppercase tracking-widest text-opais-red font-heading">Secção Especial</span>
+                <h2 class="text-3xl sm:text-4xl font-black font-heading text-opais-black uppercase tracking-tight">INVESTIR EM MOMA</h2>
+                <p class="text-base sm:text-lg font-bold text-slate-700 mt-1">Há território. Há recursos. Há oportunidades.</p>
+            </div>
+
+            <!-- CALL TO ACTION FINAL -->
+            <div class="bg-opais-black text-white p-8 sm:p-12 rounded-sm border-2 border-opais-red text-center space-y-4">
+                <span class="bg-opais-red text-white text-xs font-black uppercase px-3.5 py-1.5 font-heading">
+                    Oportunidades de Negócio
+                </span>
+                <h3 class="text-3xl sm:text-4xl font-black font-heading uppercase text-white">
+                    A sua próxima oportunidade pode começar aqui
+                </h3>
+                <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-serif italic">
+                    Descubra as potencialidades agrícolas de Piqueira, Nailocone e Namiwi no gergelim, a rede dos 10 centros de pesca, as areias pesadas e as praias de Moma.
+                </p>
+                <div class="pt-2 flex flex-wrap justify-center gap-4">
+                    <a href="#contacto" class="bg-opais-red hover:bg-opais-darkred text-white font-heading font-black px-7 py-3 text-xs uppercase tracking-wider rounded-sm transition">
+                        Contactar Governo do Distrito
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MAPA DE LOCALIZAÇÃO GEOGRÁFICA -->
+    <section id="mapa" class="py-14 bg-white border-t border-opais-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-opais-lightbg p-8 border border-opais-border shadow-sm">
+                <h3 class="font-heading font-black text-opais-black text-xl mb-4 uppercase">
+                    Localização Geográfica do Distrito de Moma
+                </h3>
+                <div id="moma-map" class="w-full h-80 rounded-sm z-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-opais-black text-slate-300 text-sm py-12 border-t-4 border-opais-red" id="contacto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+            
+            <div class="space-y-3">
+                <h4 class="text-white font-heading font-black text-xl uppercase">
+                    POTENCIALIDADES DE MOMA
+                </h4>
+                <p class="text-sm text-slate-400 leading-relaxed">
+                    Governo do Distrito de Moma — Província de Nampula, República de Moçambique.
+                </p>
+            </div>
+
+            <div>
+                <h5 class="text-white font-heading font-bold text-base uppercase mb-3">Sectores do Portal</h5>
+                <ul class="space-y-2 text-slate-400 text-sm">
+                    <li><a href="#agricultura" class="hover:text-opais-red transition">• Agricultura (Gergelim, Coco, Milho)</a></li>
+                    <li><a href="#pesca" class="hover:text-opais-red transition">• Pesca (10 Centros de Pesca)</a></li>
+                    <li><a href="#minerais" class="hover:text-opais-red transition">• Recursos Minerais</a></li>
+                    <li><a href="#turismo" class="hover:text-opais-red transition">• Turismo e Ilhas</a></li>
+                    <li><a href="#investir" class="hover:text-opais-red transition">• Investir em Moma</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white font-heading font-bold text-base uppercase mb-3">Localização Oficial</h5>
+                <p class="mb-1">• Vila Sede de Moma, Província de Nampula</p>
+                <p>• República de Moçambique</p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-neutral-800 text-center text-slate-400 text-xs">
+            © Governo do Distrito de Moma — Província de Nampula, República de Moçambique.
+        </div>
+    </footer>
+
+    <!-- Leaflet JS (Mapa) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('moma-map').setView([-16.78, 39.22], 10);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            var momaMarker = L.marker([-16.78, 39.22]).addTo(map);
+            momaMarker.bindPopup("<b>Vila Sede de Moma</b><br>Governo do Distrito de Moma.").openPopup();
+
+            // Toggle Mobile Menu
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
